@@ -5,7 +5,7 @@ import sys
 def get_snyk_token():
     SNYK_TOKEN = check_if_snyk_token_exist()
     
-    pattern = re.compile(r'([\d\w]{8}-[\d\w]{4}-[\d\w]{4}-[\d\w]{4}-[\d\w]{12})')
+    pattern = re.compile(r'snyk_uat\.\S+')
     if pattern.fullmatch(SNYK_TOKEN) == None:
         print("Snyk token is not defined or not valid.")
         sys.exit()
@@ -15,7 +15,7 @@ def get_snyk_token():
 def get_gitlab_token():
     GITLAB_TOKEN = check_if_gitlab_token_exist()
 
-    pattern = re.compile(r'glpat-[\d\w]{20}')
+    pattern = re.compile(r'glpat-\w{20}')
     if pattern.fullmatch(GITLAB_TOKEN) == None:
         print("GitLab token is not defined or not valid.")
         sys.exit()
@@ -25,7 +25,7 @@ def get_gitlab_token():
 def get_github_token():
     GITHUB_TOKEN = check_if_github_token_exist()
 
-    pattern = re.compile(r'ghp_[\d\w]{36}')
+    pattern = re.compile(r'(ghp_|github_pat_)\w+')
     if pattern.fullmatch(GITHUB_TOKEN) == None:
         print("GitHub token is not defined or not valid.")
         sys.exit()
