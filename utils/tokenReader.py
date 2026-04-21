@@ -25,7 +25,7 @@ def get_gitlab_token():
 def get_github_token():
     GITHUB_TOKEN = check_if_github_token_exist()
 
-    pattern = re.compile(r'ghp_[\d\w]{36}')
+    pattern = re.compile(r'(ghp_|github_pat_)\w+')
     if pattern.fullmatch(GITHUB_TOKEN) == None:
         print("GitHub token is not defined or not valid.")
         sys.exit()
