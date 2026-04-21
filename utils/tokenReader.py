@@ -15,7 +15,7 @@ def get_snyk_token():
 def get_gitlab_token():
     GITLAB_TOKEN = check_if_gitlab_token_exist()
 
-    pattern = re.compile(r'glpat-[\d\w]{20}')
+    pattern = re.compile(r'glpat-\w{20}')
     if pattern.fullmatch(GITLAB_TOKEN) == None:
         print("GitLab token is not defined or not valid.")
         sys.exit()
