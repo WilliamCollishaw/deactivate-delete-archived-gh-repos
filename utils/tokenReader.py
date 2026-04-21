@@ -5,7 +5,7 @@ import sys
 def get_snyk_token():
     SNYK_TOKEN = check_if_snyk_token_exist()
     
-    pattern = re.compile(r'([\d\w]{8}-[\d\w]{4}-[\d\w]{4}-[\d\w]{4}-[\d\w]{12})')
+    pattern = re.compile(r'snyk_uat\.\w+')
     if pattern.fullmatch(SNYK_TOKEN) == None:
         print("Snyk token is not defined or not valid.")
         sys.exit()
