@@ -1,2 +1,2 @@
 requests==2.33.*
-typer==0.15.2
+typer==0.24.*
