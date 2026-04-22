@@ -3,7 +3,7 @@ import requests
 import time
 import sys
 
-from utils.tokenReader import get_snyk_token
+from utils.token_reader import get_snyk_token
 
 SNYK_TOKEN = get_snyk_token()
 

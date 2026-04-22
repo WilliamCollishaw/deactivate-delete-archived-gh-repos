@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from utils.tokenReader import get_snyk_token, get_github_token, get_gitlab_token
+from utils.token_reader import get_snyk_token, get_github_token, get_gitlab_token
 
 class TestHelper(unittest.TestCase):
 
