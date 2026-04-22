@@ -1,10 +1,10 @@
 import unittest
 from unittest.mock import patch, Mock
-from utils.githubApi import get_archived_repos_urls
+from utils.github_api import get_archived_repos_urls
 
 class TestGithubApi(unittest.TestCase):
 
-    @patch('utils.githubApi.requests.get')
+    @patch('utils.github_api.requests.get')
     def test_get_archived_repos_urls(self, mock_get):
         # Mock response for the GitHub API
         mock_response = Mock()
