@@ -2,8 +2,18 @@ import os
 import re
 import sys
 
+def _get_token_from_env(token_name: str) -> str:
+    """Retrieve token from environment variable."""
+    print(f"Checking for {token_name} environment variable")
+    token = os.getenv(token_name)
+    if not token:
+        print(f"{token_name} does not exist")
+        sys.exit()
+    print(f"Found {token_name}")
+    return token
+
 def get_snyk_token():
-    SNYK_TOKEN = check_if_snyk_token_exist()
+    SNYK_TOKEN = _get_token_from_env('SNYK_TOKEN')
     
     pattern = re.compile(r'snyk_uat\.\S+')
     if pattern.fullmatch(SNYK_TOKEN) == None:
@@ -13,7 +23,7 @@ def get_snyk_token():
         return SNYK_TOKEN
 
 def get_gitlab_token():
-    GITLAB_TOKEN = check_if_gitlab_token_exist()
+    GITLAB_TOKEN = _get_token_from_env('GITLAB_TOKEN')
 
     pattern = re.compile(r'glpat-\w{20}')
     if pattern.fullmatch(GITLAB_TOKEN) == None:
@@ -23,7 +33,7 @@ def get_gitlab_token():
         return GITLAB_TOKEN
 
 def get_github_token():
-    GITHUB_TOKEN = check_if_github_token_exist()
+    GITHUB_TOKEN = _get_token_from_env('GITHUB_TOKEN')
 
     pattern = re.compile(r'(ghp_|github_pat_)\w+')
     if pattern.fullmatch(GITHUB_TOKEN) == None:
@@ -31,33 +41,3 @@ def get_github_token():
         sys.exit()
     else:
         return GITHUB_TOKEN
-
-def check_if_github_token_exist():
-    print("Checking for GitHub token environment variable")
-    try:
-        if os.environ.get('GITHUB_TOKEN'):
-            print("Found GitHub token")
-            return os.getenv('GITHUB_TOKEN')
-    except:
-        print("GitHub token does not exist")
-        sys.exit()
-
-def check_if_gitlab_token_exist():
-    print("Checking for GitLab token environment variable")
-    try:
-        if os.environ.get('GITLAB_TOKEN'):
-            print("Found GitLab token")
-            return os.getenv('GITLAB_TOKEN')
-    except:
-        print("GitLab token does not exist")
-        sys.exit()
-
-def check_if_snyk_token_exist():
-    print("Checking for Snyk token environment variable")
-    try:
-        if os.environ.get('SNYK_TOKEN'):
-            print("Found snyk token")
-            return os.getenv('SNYK_TOKEN')
-    except:
-        print("Snyk token does not exist")
-        sys.exit()
