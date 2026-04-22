@@ -3,7 +3,7 @@ import json
 import logging
 import sys
 
-from utils.githubApi import get_archived_repos_urls
+from utils.github_api import get_archived_repos_urls
 from utils.token_reader import get_github_token
 from utils.synkApi import get_snyk_targets, get_snyk_projects_by_target_id, deactivate_project, delete_project
 from utils.file_writer import write_json_to_file
