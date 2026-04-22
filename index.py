@@ -6,7 +6,7 @@ import sys
 from utils.githubApi import get_archived_repos_urls
 from utils.token_reader import get_github_token
 from utils.synkApi import get_snyk_targets, get_snyk_projects_by_target_id, deactivate_project, delete_project
-from utils.fileReader import write_json_to_file
+from utils.file_reader import write_json_to_file
 
 GITHUB_TOKEN = get_github_token()
 
